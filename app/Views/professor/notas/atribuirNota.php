@@ -1,92 +1,66 @@
-<div class="container mt-4">
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lançar Notas - LabMaker</title>
+  <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
 
-    <h2>
+  <div class="hero">
+    <div class="container">
+      <h1><?= esc($atividade['titulo']) ?></h1>
+      <p>Pontuação máxima: <?= $atividade['pontuacao_maxima'] ?> pontos</p>
+    </div>
+  </div>
 
-        <?= esc($atividade['titulo']) ?>
+  <div class="pagina">
+    <div class="container">
 
-    </h2>
+      <div class="tabela-box">
+        <form method="post" action="<?= site_url('professor/notas/salvar/'.$atividade['id']) ?>">
 
-    <p>
+          <?= csrf_field() ?>
 
-        Pontuação Máxima:
-        <?= $atividade['pontuacao_maxima'] ?>
-
-    </p>
-
-    <hr>
-
-    <form
-        method="post"
-        action="<?= site_url(
-            'professor/notas/salvar/' .
-            $atividade['id']
-        ) ?>">
-
-        <?= csrf_field() ?>
-
-        <table class="table table-bordered">
-
+          <table class="table table-bordered">
             <thead>
-
-            <tr>
-
+              <tr>
                 <th>Aluno</th>
                 <th>Nota</th>
-
-            </tr>
-
+              </tr>
             </thead>
-
             <tbody>
-
-            <?php foreach($alunos as $aluno): ?>
-
+              <?php foreach ($alunos as $aluno): ?>
                 <tr>
-
-                    <td>
-
-                        <?= esc($aluno['nome']) ?>
-
-                    </td>
-
-                    <td>
-
-                        <input
-                            type="number"
-                            step="0.01"
-                            min="0"
-                            max="<?= $atividade['pontuacao_maxima'] ?>"
-                            name="notas[<?= $aluno['aluno_id'] ?>]"
-                            value="<?= $aluno['nota'] ?>"
-                            class="form-control">
-
-                    </td>
-
+                  <td><?= esc($aluno['nome']) ?></td>
+                  <td>
+                    <input
+                      type="number"
+                      step="0.01"
+                      min="0"
+                      max="<?= $atividade['pontuacao_maxima'] ?>"
+                      name="notas[<?= $aluno['aluno_id'] ?>]"
+                      value="<?= $aluno['nota'] ?>"
+                      class="form-control">
+                  </td>
                 </tr>
-
-            <?php endforeach; ?>
-
+              <?php endforeach; ?>
             </tbody>
+          </table>
 
-        </table>
+          <button type="submit" class="btn-salvar">Salvar Notas</button>
 
-        <button
-            class="btn btn-success">
+        </form>
+      </div>
 
-            Salvar Notas
+      <a href="<?= site_url('professor/notas') ?>" class="link-voltar">Voltar para Notas</a>
 
-        </button>
+    </div>
+  </div>
 
-        <a
-            href="<?= site_url(
-                'professor/notas'
-            ) ?>"
-            class="btn btn-secondary">
-
-            Voltar
-
-        </a>
-
-    </form>
-
-</div>
+</body>
+</html>

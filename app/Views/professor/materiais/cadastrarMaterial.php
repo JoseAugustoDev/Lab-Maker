@@ -1,104 +1,75 @@
-<div class="container mt-4">
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Novo Material - LabMaker</title>
+  <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
 
-    <h2>Novo Material</h2>
+  <div class="hero">
+    <div class="container">
+      <h1>Novo Material</h1>
+      <p>Adicione um material para sua turma.</p>
+    </div>
+  </div>
 
-    <form
-        action="<?= site_url(
-            'professor/materiais/store'
-        ) ?>"
-        method="post">
+  <div class="pagina">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <div class="form-box">
+            <form action="<?= site_url('professor/materiais/store') ?>" method="post">
 
-        <?= csrf_field() ?>
+              <?= csrf_field() ?>
 
-        <div class="mb-3">
+              <div class="form-group">
+                <label for="turma_id">Turma</label>
+                <select id="turma_id" name="turma_id" class="form-control" required>
+                  <?php foreach ($turmas as $turma): ?>
+                    <option value="<?= $turma['id'] ?>"><?= esc($turma['codigo']) ?></option>
+                  <?php endforeach; ?>
+                </select>
+              </div>
 
-            <label>Turma</label>
+              <div class="form-group">
+                <label for="titulo">Título</label>
+                <input type="text" id="titulo" name="titulo" class="form-control" required>
+              </div>
 
-            <select
-                name="turma_id"
-                class="form-control">
+              <div class="form-group">
+                <label for="descricao">Descrição</label>
+                <textarea id="descricao" name="descricao" rows="4" class="form-control"></textarea>
+              </div>
 
-                <?php foreach($turmas as $turma): ?>
+              <div class="form-group">
+                <label for="tipo">Tipo</label>
+                <select id="tipo" name="tipo" class="form-control">
+                  <option value="PDF">PDF</option>
+                  <option value="VIDEO">Vídeo</option>
+                  <option value="LINK">Link</option>
+                </select>
+              </div>
 
-                    <option
-                        value="<?= $turma['id'] ?>">
+              <div class="form-group">
+                <label for="arquivo_url">Arquivo ou URL</label>
+                <input type="text" id="arquivo_url" name="arquivo_url" class="form-control">
+              </div>
 
-                        <?= esc(
-                            $turma['codigo']
-                        ) ?>
+              <button type="submit" class="btn-salvar">Salvar Material</button>
 
-                    </option>
+              <a href="<?= site_url('professor/materiais') ?>" class="link-voltar">Cancelar</a>
 
-                <?php endforeach; ?>
-
-            </select>
-
+            </form>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
 
-        <div class="mb-3">
-
-            <label>Título</label>
-
-            <input
-                type="text"
-                name="titulo"
-                class="form-control"
-                required>
-
-        </div>
-
-        <div class="mb-3">
-
-            <label>Descrição</label>
-
-            <textarea
-                name="descricao"
-                class="form-control"></textarea>
-
-        </div>
-
-        <div class="mb-3">
-
-            <label>Tipo</label>
-
-            <select
-                name="tipo"
-                class="form-control">
-
-                <option value="PDF">
-                    PDF
-                </option>
-
-                <option value="VIDEO">
-                    Vídeo
-                </option>
-
-                <option value="LINK">
-                    Link
-                </option>
-
-            </select>
-
-        </div>
-
-        <div class="mb-3">
-
-            <label>Arquivo ou URL</label>
-
-            <input
-                type="text"
-                name="arquivo_url"
-                class="form-control">
-
-        </div>
-
-        <button
-            class="btn btn-success">
-
-            Salvar
-
-        </button>
-
-    </form>
-
-</div>
+</body>
+</html>
