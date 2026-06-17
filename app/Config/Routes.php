@@ -74,6 +74,7 @@ $routes->group(
 
         $routes->get('perfil','Aluno\PerfilController::index');
         $routes->get('turmas','Aluno\TurmaController::index');
+        $routes->get('notas', 'Aluno\NotaController::index');
 
     }
 );
