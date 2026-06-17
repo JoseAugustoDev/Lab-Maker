@@ -1,33 +1,51 @@
-<div class="container mt-4">
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <title>Editar Turma</title>
+</head>
+
+<body class="background-lab">
+
+    <div class="container mt-4">
 
     <div class="card">
 
         <div class="card-header">
-            Editar Turma
+            Editar turma
         </div>
 
         <div class="card-body">
 
-            <form action="<?= site_url('admin/turmas/update/'.$turma['id']) ?>"
+            <?php if (!empty($erro)): ?>
+                <div class="alert alert-danger" role="alert">
+                    <?= htmlspecialchars($erro) ?>
+                </div>
+            <?php endif; ?>
+
+            <form action="<?= base_url('admin/turmas/update/' . $turma['id']) ?>"
                   method="post">
 
                 <?= csrf_field() ?>
 
                 <div class="mb-3">
-                    <label>Curso</label>
+                    <label for="curso_id" class="form-label">Curso</label>
 
-                    <select name="curso_id"
-                            class="form-control">
+                    <select id="curso_id" name="curso_id" class="form-select" required>
 
-                        <?php foreach($cursos as $curso): ?>
+                        <?php foreach ($cursos as $curso): ?>
 
                             <option
-                                value="<?= $curso['id'] ?>"
-                                <?= $curso['id'] == $turma['curso_id']
+                                value="<?= htmlspecialchars($curso['id']) ?>"
+                                <?= (int) $curso['id'] === (int) $turma['curso_id']
                                     ? 'selected'
                                     : '' ?>>
 
-                                <?= esc($curso['titulo']) ?>
+                                <?= htmlspecialchars($curso['titulo']) ?>
 
                             </option>
 
@@ -37,93 +55,95 @@
                 </div>
 
                 <div class="mb-3">
-                    <label>Código</label>
+                    <label for="codigo" class="form-label">Código</label>
 
                     <input type="text"
+                           id="codigo"
                            name="codigo"
                            class="form-control"
-                           value="<?= esc($turma['codigo']) ?>">
+                           value="<?= htmlspecialchars($turma['codigo']) ?>"
+                           required>
                 </div>
 
                 <div class="mb-3">
-                    <label>Semestre</label>
+                    <label for="semestre" class="form-label">Semestre</label>
 
                     <input type="text"
+                           id="semestre"
                            name="semestre"
                            class="form-control"
-                           value="<?= esc($turma['semestre']) ?>">
+                           value="<?= htmlspecialchars($turma['semestre']) ?>"
+                           required>
                 </div>
 
                 <div class="row">
 
                     <div class="col-md-6">
 
-                        <label>Data Início</label>
+                        <div class="mb-3">
+                            <label for="data_inicio" class="form-label">Data de início</label>
 
-                        <input type="date"
-                               name="data_inicio"
-                               class="form-control"
-                               value="<?= $turma['data_inicio'] ?>">
+                            <input type="date"
+                                   id="data_inicio"
+                                   name="data_inicio"
+                                   class="form-control"
+                                   value="<?= htmlspecialchars($turma['data_inicio']) ?>"
+                                   required>
+                        </div>
+
                     </div>
 
                     <div class="col-md-6">
 
-                        <label>Data Fim</label>
+                        <div class="mb-3">
+                            <label for="data_fim" class="form-label">Data de término</label>
 
-                        <input type="date"
-                               name="data_fim"
-                               class="form-control"
-                               value="<?= $turma['data_fim'] ?>">
+                            <input type="date"
+                                   id="data_fim"
+                                   name="data_fim"
+                                   class="form-control"
+                                   value="<?= htmlspecialchars($turma['data_fim']) ?>"
+                                   required>
+                        </div>
+
                     </div>
 
                 </div>
 
-                <br>
-
                 <div class="mb-3">
 
-                    <label>Horário</label>
+                    <label for="horario" class="form-label">Horário</label>
 
                     <input type="text"
+                           id="horario"
                            name="horario"
                            class="form-control"
-                           value="<?= esc($turma['horario']) ?>">
+                           value="<?= htmlspecialchars($turma['horario']) ?>"
+                           required>
 
                 </div>
 
                 <div class="mb-3">
 
-                    <label>Status</label>
+                    <label for="status" class="form-label">Status</label>
 
-                    <select name="status"
-                            class="form-control">
+                    <select id="status" name="status" class="form-select">
 
-                        <option value="ABERTA"
-                            <?= $turma['status'] == 'ABERTA'
-                                ? 'selected'
-                                : '' ?>>
+                        <?php
+                        $statusOpcoes = [
+                            'ABERTA' => 'Aberta',
+                            'EM_ANDAMENTO' => 'Em andamento',
+                            'FINALIZADA' => 'Finalizada',
+                        ];
+                        foreach ($statusOpcoes as $valor => $label):
+                        ?>
+                            <option value="<?= htmlspecialchars($valor) ?>"
+                                <?= $turma['status'] === $valor ? 'selected' : '' ?>>
 
-                            Aberta
+                                <?= htmlspecialchars($label) ?>
 
-                        </option>
-
-                        <option value="EM_ANDAMENTO"
-                            <?= $turma['status'] == 'EM_ANDAMENTO'
-                                ? 'selected'
-                                : '' ?>>
-
-                            Em andamento
-
-                        </option>
-
-                        <option value="FINALIZADA"
-                            <?= $turma['status'] == 'FINALIZADA'
-                                ? 'selected'
-                                : '' ?>>
-
-                            Finalizada
-
-                        </option>
+                            </option>
+                        <?php endforeach; ?>
 
                     </select>
 
@@ -131,25 +151,24 @@
 
                 <div class="mb-3">
 
-                    <label>Professores Responsáveis</label>
+                    <label for="professores" class="form-label">Professores responsáveis</label>
 
-                    <select name="professores[]"
-                            class="form-control"
+                    <select id="professores"
+                            name="professores[]"
+                            class="form-select"
                             multiple
-                            size="6">
+                            size="6"
+                            required>
 
-                        <?php foreach($professores as $professor): ?>
+                        <?php foreach ($professores as $professor): ?>
 
                             <option
-                                value="<?= $professor['id'] ?>"
-                                <?= in_array(
-                                    $professor['id'],
-                                    $professoresSelecionados
-                                )
-                                ? 'selected'
-                                : '' ?>>
+                                value="<?= htmlspecialchars($professor['id']) ?>"
+                                <?= in_array((int) $professor['id'], $professoresSelecionados, true)
+                                    ? 'selected'
+                                    : '' ?>>
 
-                                <?= esc($professor['nome']) ?>
+                                <?= htmlspecialchars($professor['nome']) ?>
 
                             </option>
 
@@ -157,15 +176,19 @@
 
                     </select>
 
+                    <small class="text-muted">
+                        Segure CTRL para selecionar mais de um professor.
+                    </small>
+
                 </div>
 
                 <button type="submit"
                         class="btn btn-success">
 
-                    Salvar Alterações
+                    Salvar alterações
                 </button>
 
-                <a href="<?= site_url('admin/turmas') ?>"
+                <a href="<?= base_url('admin/turmas') ?>"
                    class="btn btn-secondary">
 
                     Cancelar
@@ -178,3 +201,5 @@
     </div>
 
 </div>
+
+</body>

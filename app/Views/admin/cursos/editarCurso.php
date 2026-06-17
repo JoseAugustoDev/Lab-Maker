@@ -1,119 +1,107 @@
-<div class="container mt-4">
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-    <div class="card">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <title>Listar Professores</title>
+</head>
 
-        <div class="card-header">
-            Editar Curso
-        </div>
+<body class="background-lab">
 
-        <div class="card-body">
+    <div class="container mt-4">
 
-            <form action="<?= site_url('admin/cursos/update/'.$curso['id']) ?>"
-                  method="post">
+        <div class="card">
 
-                <?= csrf_field() ?>
+            <div class="card-header">
+                Editar curso
+            </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Título</label>
+            <div class="card-body">
 
-                    <input type="text"
-                           name="titulo"
-                           class="form-control"
-                           value="<?= esc($curso['titulo']) ?>"
-                           required>
-                </div>
+                <?php if (!empty($erro)): ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?= htmlspecialchars($erro) ?>
+                    </div>
+                <?php endif; ?>
 
-                <div class="mb-3">
-                    <label class="form-label">Área</label>
+                <form action="<?= base_url('admin/cursos/update/' . $curso['id']) ?>" method="post">
 
-                    <select name="area"
-                            class="form-control">
+                    <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrf_token ?? '') ?>">
 
-                        <option value="Impressão 3D"
-                            <?= $curso['area'] == 'Impressão 3D' ? 'selected' : '' ?>>
-                            Impressão 3D
-                        </option>
+                    <div class="mb-3">
+                        <label for="titulo" class="form-label">Título</label>
 
-                        <option value="Arduino"
-                            <?= $curso['area'] == 'Arduino' ? 'selected' : '' ?>>
-                            Arduino
-                        </option>
+                        <input type="text" id="titulo" name="titulo" class="form-control"
+                            value="<?= htmlspecialchars($curso['titulo']) ?>" required>
+                    </div>
 
-                        <option value="Robótica"
-                            <?= $curso['area'] == 'Robótica' ? 'selected' : '' ?>>
-                            Robótica
-                        </option>
+                    <div class="mb-3">
+                        <label for="area" class="form-label">Área</label>
 
-                        <option value="CNC"
-                            <?= $curso['area'] == 'CNC' ? 'selected' : '' ?>>
-                            CNC
-                        </option>
+                        <select id="area" name="area" class="form-select">
 
-                        <option value="Programação"
-                            <?= $curso['area'] == 'Programação' ? 'selected' : '' ?>>
-                            Programação
-                        </option>
+                            <?php
+                            $areas = ['Impressão 3D', 'Arduino', 'Robótica', 'CNC', 'Programação'];
+                            foreach ($areas as $area):
+                                ?>
+                                <option value="<?= htmlspecialchars($area) ?>" <?= $curso['area'] === $area ? 'selected' : '' ?>>
+                                    <?= htmlspecialchars($area) ?>
+                                </option>
+                            <?php endforeach; ?>
 
-                    </select>
-                </div>
+                        </select>
+                    </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Nível</label>
+                    <div class="mb-3">
+                        <label for="nivel" class="form-label">Nível</label>
 
-                    <select name="nivel"
-                            class="form-control">
+                        <select id="nivel" name="nivel" class="form-select">
 
-                        <option value="Básico"
-                            <?= $curso['nivel'] == 'Básico' ? 'selected' : '' ?>>
-                            Básico
-                        </option>
+                            <?php
+                            $niveis = ['Básico', 'Intermediário', 'Avançado'];
+                            foreach ($niveis as $nivel):
+                                ?>
+                                <option value="<?= htmlspecialchars($nivel) ?>" <?= $curso['nivel'] === $nivel ? 'selected' : '' ?>>
+                                    <?= htmlspecialchars($nivel) ?>
+                                </option>
+                            <?php endforeach; ?>
 
-                        <option value="Intermediário"
-                            <?= $curso['nivel'] == 'Intermediário' ? 'selected' : '' ?>>
-                            Intermediário
-                        </option>
+                        </select>
+                    </div>
 
-                        <option value="Avançado"
-                            <?= $curso['nivel'] == 'Avançado' ? 'selected' : '' ?>>
-                            Avançado
-                        </option>
+                    <div class="mb-3">
+                        <label for="carga_horaria" class="form-label">Carga horária</label>
 
-                    </select>
-                </div>
+                        <input type="number" id="carga_horaria" name="carga_horaria" class="form-control" min="1"
+                            value="<?= htmlspecialchars($curso['carga_horaria']) ?>">
+                    </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Carga Horária</label>
+                    <div class="mb-3">
+                        <label for="descricao" class="form-label">Descrição</label>
 
-                    <input type="number"
-                           name="carga_horaria"
-                           class="form-control"
-                           value="<?= esc($curso['carga_horaria']) ?>">
-                </div>
+                        <textarea id="descricao" name="descricao" rows="5"
+                            class="form-control"><?= htmlspecialchars($curso['descricao']) ?></textarea>
+                    </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Descrição</label>
+                    <button type="submit" class="btn btn-success">
 
-                    <textarea name="descricao"
-                              rows="5"
-                              class="form-control"><?= esc($curso['descricao']) ?></textarea>
-                </div>
+                        Salvar alterações
+                    </button>
 
-                <button type="submit"
-                        class="btn btn-success">
+                    <a href="<?= base_url('admin/cursos') ?>" class="btn btn-secondary">
 
-                    Salvar Alterações
-                </button>
+                        Cancelar
+                    </a>
 
-                <a href="<?= site_url('admin/cursos') ?>"
-                   class="btn btn-secondary">
+                </form>
 
-                    Cancelar
-                </a>
-
-            </form>
+            </div>
 
         </div>
 
     </div>
 
-</div>
+</body>

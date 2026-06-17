@@ -1,51 +1,96 @@
-<table class="table table-striped">
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Email</th>
-            <th>Telefone</th>
-        </tr>
-    </thead>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <title>Listar Professores</title>
+</head>
 
-    <tbody>
+<body class="background-lab">
 
-    <?php foreach($professores as $professor): ?>
+    <div class="container mt-4">
 
-        <tr>
+        <div class="card">
 
-            <td><?= $professor['id'] ?></td>
+            <div class="card-header">
+                Lista de professores
+            </div>
 
-            <td><?= esc($professor['nome']) ?></td>
+            <div class="card-body">
 
-            <td><?= esc($professor['email']) ?></td>
+                <?php if (!empty($mensagem)): ?>
+                    <div class="alert alert-success" role="alert">
+                        <?= htmlspecialchars($mensagem) ?>
+                    </div>
+                <?php endif; ?>
 
-            <td><?= esc($professor['telefone']) ?></td>
+                <?php if (empty($professores)): ?>
+                    <p class="text-muted mb-0">Nenhum professor cadastrado ainda.</p>
+                <?php else: ?>
 
-            <td>
+                    <table class="table table-striped mt-3">
 
-                <a href="<?= site_url('admin/professores/edit/'.$professor['id']) ?>"
-                class="btn btn-warning btn-sm">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>Telefone</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
 
-                    Editar
-                </a>
+                        <tbody>
 
-                <a href="<?= site_url('admin/professores/delete/'.$professor['id']) ?>"
-                class="btn btn-danger btn-sm"
-                onclick="return confirm('Deseja excluir este professor?')">
+                            <?php foreach ($professores as $professor): ?>
 
-                    Excluir
-                </a>
+                                <tr>
 
-            </td>
+                                    <td><?= htmlspecialchars($professor['id']) ?></td>
 
-        </tr>
+                                    <td><?= htmlspecialchars($professor['nome']) ?></td>
 
-    <?php endforeach; ?>
+                                    <td><?= htmlspecialchars($professor['email']) ?></td>
 
-    </tbody>
+                                    <td><?= htmlspecialchars($professor['telefone'] ?? '-') ?></td>
 
-</table>
+                                    <td>
 
-<a href="<?= base_url('admin/dashboard') ?>">Voltar</a>
+                                        <a href="<?= base_url('admin/professores/edit/' . $professor['id']) ?>"
+                                            class="btn btn-warning btn-sm">
+
+                                            Editar
+                                        </a>
+
+                                        <a href="<?= base_url('admin/professores/delete/' . $professor['id']) ?>"
+                                            class="btn btn-danger btn-sm"
+                                            onclick="return confirm('Deseja excluir este professor?')">
+
+                                            Excluir
+                                        </a>
+
+                                    </td>
+
+                                </tr>
+
+                            <?php endforeach; ?>
+
+                        </tbody>
+
+                    </table>
+
+                <?php endif; ?>
+
+                <a href="<?= base_url('admin/dashboard') ?>" class="btn btn-secondary btn-sm mt-2">Voltar</a>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

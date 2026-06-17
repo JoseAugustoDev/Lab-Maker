@@ -1,98 +1,106 @@
-<div class="container mt-4">
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-    <div class="card">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <title>Editar Professor</title>
+</head>
 
-        <div class="card-header">
-            Editar Professor
-        </div>
+<body class="background-lab">
 
-        <div class="card-body">
+    <div class="container mt-4">
 
-            <form action="<?= site_url('admin/professores/update/'.$professor['id']) ?>"
-                  method="post">
+        <div class="card">
 
-                <?= csrf_field() ?>
+            <div class="card-header">
+                Editar professor
+            </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Nome</label>
+            <div class="card-body">
 
-                    <input type="text"
-                           name="nome"
-                           class="form-control"
-                           value="<?= esc($professor['nome']) ?>"
-                           required>
-                </div>
+                <?php if (!empty($erro)): ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?= htmlspecialchars($erro) ?>
+                    </div>
+                <?php endif; ?>
 
-                <div class="mb-3">
-                    <label class="form-label">Email</label>
+                <form action="<?= base_url('admin/professores/update/' . $professor['id']) ?>" method="post">
 
-                    <input type="email"
-                           name="email"
-                           class="form-control"
-                           value="<?= esc($professor['email']) ?>"
-                           required>
-                </div>
+                    <?= csrf_field() ?>
 
-                <div class="mb-3">
-                    <label class="form-label">Telefone</label>
+                    <div class="mb-3">
+                        <label for="nome" class="form-label">Nome</label>
 
-                    <input type="text"
-                           name="telefone"
-                           class="form-control"
-                           value="<?= esc($professor['telefone']) ?>">
-                </div>
+                        <input type="text" id="nome" name="nome" class="form-control"
+                            value="<?= htmlspecialchars($professor['nome']) ?>" required>
+                    </div>
 
-                <div class="mb-3">
-                    <label class="form-label">
-                        Nova Senha
-                    </label>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
 
-                    <input type="password"
-                           name="senha"
-                           class="form-control">
+                        <input type="email" id="email" name="email" class="form-control"
+                            value="<?= htmlspecialchars($professor['email']) ?>" required>
+                    </div>
 
-                    <small class="text-muted">
-                        Deixe em branco para manter a senha atual.
-                    </small>
-                </div>
+                    <div class="mb-3">
+                        <label for="telefone" class="form-label">Telefone</label>
 
-                <div class="mb-3">
-                    <label class="form-label">
-                        Status
-                    </label>
+                        <input type="text" id="telefone" name="telefone" class="form-control"
+                            value="<?= htmlspecialchars($professor['telefone'] ?? '') ?>">
+                    </div>
 
-                    <select name="ativo"
-                            class="form-control">
+                    <div class="mb-3">
+                        <label for="senha" class="form-label">
+                            Nova senha
+                        </label>
 
-                        <option value="1"
-                            <?= $professor['ativo'] ? 'selected' : '' ?>>
-                            Ativo
-                        </option>
+                        <input type="password" id="senha" name="senha" class="form-control">
 
-                        <option value="0"
-                            <?= !$professor['ativo'] ? 'selected' : '' ?>>
-                            Inativo
-                        </option>
+                        <small class="text-muted">
+                            Deixe em branco para manter a senha atual.
+                        </small>
+                    </div>
 
-                    </select>
-                </div>
+                    <div class="mb-3">
+                        <label for="ativo" class="form-label">
+                            Status
+                        </label>
 
-                <button type="submit"
-                        class="btn btn-success">
+                        <select id="ativo" name="ativo" class="form-select">
 
-                    Salvar Alterações
-                </button>
+                            <option value="1" <?= $professor['ativo'] ? 'selected' : '' ?>>
+                                Ativo
+                            </option>
 
-                <a href="<?= site_url('admin/professores') ?>"
-                   class="btn btn-secondary">
+                            <option value="0" <?= !$professor['ativo'] ? 'selected' : '' ?>>
+                                Inativo
+                            </option>
 
-                    Cancelar
-                </a>
+                        </select>
+                    </div>
 
-            </form>
+                    <button type="submit" class="btn btn-success">
+
+                        Salvar alterações
+                    </button>
+
+                    <a href="<?= base_url('admin/professores') ?>" class="btn btn-secondary">
+
+                        Cancelar
+                    </a>
+
+                </form>
+
+            </div>
 
         </div>
 
     </div>
 
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

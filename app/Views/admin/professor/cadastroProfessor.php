@@ -1,69 +1,72 @@
-<div class="container mt-4">
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-    <div class="card">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <title>Cadastrar Professor</title>
+</head>
 
-        <div class="card-header">
-            Cadastro de Professor
-        </div>
+<body class="background-lab">
+    <div class="container mt-4">
 
-        <div class="card-body">
+        <div class="card">
 
-            <form
-                action="<?= site_url('admin/professores/store') ?>"
-                method="post">
+            <div class="card-header">
+                Cadastro de Professor
+            </div>
 
-                <?= csrf_field() ?>
+            <div class="card-body">
 
-                <div class="mb-3">
-                    <label>Nome</label>
+                <?php if (!empty($erro)): ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?= htmlspecialchars($erro) ?>
+                    </div>
+                <?php endif; ?>
 
-                    <input
-                        type="text"
-                        name="nome"
-                        class="form-control"
-                        required>
-                </div>
+                <form action="<?= base_url('admin/professores/store') ?>" method="post">
 
-                <div class="mb-3">
-                    <label>Email</label>
+                    <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrf_token ?? '') ?>">
 
-                    <input
-                        type="email"
-                        name="email"
-                        class="form-control"
-                        required>
-                </div>
+                    <div class="mb-3">
+                        <label for="nome" class="form-label">Nome</label>
+                        <input type="text" id="nome" name="nome" class="form-control" required>
+                    </div>
 
-                <div class="mb-3">
-                    <label>Telefone</label>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
 
-                    <input
-                        type="text"
-                        name="telefone"
-                        class="form-control">
-                </div>
+                    <div class="mb-3">
+                        <label for="telefone" class="form-label">Telefone</label>
+                        <input type="text" id="telefone" name="telefone" class="form-control">
+                    </div>
 
-                <div class="mb-3">
-                    <label>Senha Inicial</label>
+                    <div class="mb-3">
+                        <label for="senha" class="form-label">Senha inicial</label>
+                        <input type="password" id="senha" name="senha" class="form-control" required>
+                    </div>
 
-                    <input
-                        type="password"
-                        name="senha"
-                        class="form-control"
-                        required>
-                </div>
+                    <button type="submit" class="btn btn-success">
+                        Cadastrar professor
+                    </button>
 
-                <button
-                    type="submit"
-                    class="btn btn-primary">
+                </form>
 
-                    Cadastrar Professor
-                </button>
-
-            </form>
+            </div>
 
         </div>
+
+        <a href="<?= base_url('admin/dashboard') ?>" class="btn btn-secondary mt-3">
+            Voltar
+        </a>
 
     </div>
 
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
