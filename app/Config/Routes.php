@@ -73,7 +73,7 @@ $routes->group(
     function ($routes) {
 
         $routes->get('perfil','Aluno\PerfilController::index');
-        $routes->get('cursos','Aluno\CursoController::index');
+        $routes->get('turmas','Aluno\TurmaController::index');
 
     }
 );

@@ -23,10 +23,6 @@ class TurmaModel extends Model
         'status'
     ];
 
-    
-
-    
-
     public function listarTurmasComCurso() {
         return $this->select('turma.*, curso.titulo')
             ->join('curso', 'curso.id = turma.curso_id')
