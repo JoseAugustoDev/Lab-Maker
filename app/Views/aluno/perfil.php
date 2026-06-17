@@ -34,7 +34,6 @@
                 </div>
 
                 <div class="acoes-grid">
-                    <a href="<?= base_url('aluno/cursos') ?>" class="acao-card">Meus Cursos</a>
                     <a href="<?= base_url('aluno/turmas') ?>" class="acao-card">Ver Turmas</a>
                     <a href="<?= base_url('aluno/notas') ?>" class="acao-card">Notas</a>
                 </div>

@@ -5,58 +5,82 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard - LabMaker</title>
   <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 </head>
 <body>
 
   <div class="hero">
     <div class="container">
-      <h1>Bem-vindo, <?= esc(session()->get('usuario_nome')) ?></h1>
-      <p>Painel do Professor</p>
+      <h1>Bem-vindo, <?= htmlspecialchars($_SESSION['usuario_nome'] ?? '') ?></h1>
+      <p>Painel do professor</p>
     </div>
   </div>
 
   <div class="pagina">
     <div class="container">
 
-      <!-- CARDS DE RESUMO -->
-      <div class="tabela-box">
-        <table class="table text-center" style="margin: 0;">
-          <thead>
-            <tr>
-              <th>Turmas</th>
-              <th>Atividades</th>
-              <th>Materiais</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="card-numero"><?= $quantidadeTurmas ?></td>
-              <td class="card-numero"><?= $quantidadeAtividades ?></td>
-              <td class="card-numero"><?= $quantidadeMateriais ?></td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="row mt-4">
+
+        <div class="col-md-4 mb-3">
+          <div class="card text-center h-100">
+            <div class="card-body">
+              <div class="card-numero"><?= (int) $quantidadeTurmas ?></div>
+              <div class="text-muted">Turmas</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <div class="card text-center h-100">
+            <div class="card-body">
+              <div class="card-numero"><?= (int) $quantidadeAtividades ?></div>
+              <div class="text-muted">Atividades</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <div class="card text-center h-100">
+            <div class="card-body">
+              <div class="card-numero"><?= (int) $quantidadeMateriais ?></div>
+              <div class="text-muted">Materiais</div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <!-- MENU DE NAVEGAÇÃO -->
-      <div class="tabela-box">
-        <table class="table" style="margin: 0;">
-          <tbody>
-            <tr>
-              <td><a href="<?= site_url('professor/turmas') ?>" class="btn-menu">Minhas Turmas</a></td>
-              <td><a href="<?= site_url('professor/materiais') ?>" class="btn-menu">Materiais</a></td>
-              <td><a href="<?= site_url('professor/atividades') ?>" class="btn-menu">Atividades</a></td>
-              <td><a href="<?= site_url('professor/notas') ?>" class="btn-menu">Notas</a></td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="row mt-3">
+
+        <div class="col-md-3 mb-3">
+          <a href="<?= base_url('professor/turmas') ?>" class="btn btn-outline-success w-100 py-3">
+            Minhas turmas
+          </a>
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <a href="<?= base_url('professor/materiais') ?>" class="btn btn-outline-success w-100 py-3">
+            Materiais
+          </a>
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <a href="<?= base_url('professor/atividades') ?>" class="btn btn-outline-success w-100 py-3">
+            Atividades
+          </a>
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <a href="<?= base_url('professor/notas') ?>" class="btn btn-outline-success w-100 py-3">
+            Notas
+          </a>
+        </div>
+
       </div>
 
-      <div class="text-center" style="margin-top: 30px;">
-        <a href="<?= site_url('logout') ?>" class="link-voltar">Sair</a>
+      <div class="text-center mt-4">
+        <a href="<?= base_url('logout') ?>" class="link-voltar">Sair</a>
       </div>
 
     </div>
