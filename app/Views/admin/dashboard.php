@@ -41,8 +41,6 @@
                     <a href="<?= base_url('admin/cursos') ?>" class="acao-card">Visualizar Cursos</a> 
                     <a href="<?= base_url('admin/turmas/create') ?>" class="acao-card">Cadastrar Turmas</a> 
                     <a href="<?= base_url('admin/turmas') ?>" class="acao-card">Visualizar Turmas</a>
-                    <a href="<?= base_url('admin/relatorios') ?>" class="acao-card">Relatórios</a>
-                    <a href="#" class="acao-card">Avisos</a> <!--Fazer essa tela-->
                 </div>
             </div>
         </main>

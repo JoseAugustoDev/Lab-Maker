@@ -76,7 +76,7 @@
                     </div>
 
                     <div class="card">
-                        <img src="/imgs/cnc_mdf_imagem2.jpg" alt="CNC Laser">
+                        <img src="/imgs/corte_mdf.jpg" alt="CNC Laser">
                         <div class="card-content">
                             <h3>CNC a Laser</h3>
                             <p>Aprenda corte e gravação com precisão profissional.</p>
@@ -84,7 +84,7 @@
                     </div>
 
                     <div class="card">
-                        <img src="/imgs/3D Printing land image.jpg" alt="Impressão 3D">
+                        <img src="/imgs/impressora_3d.jpg" alt="Impressão 3D">
                         <div class="card-content">
                             <h3>Impressão 3D</h3>
                             <p>Transforme ideias em objetos físicos reais.</p>
