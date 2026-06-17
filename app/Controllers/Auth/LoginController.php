@@ -74,8 +74,6 @@ class LoginController extends BaseController
             'isLoggedIn' => true,
         ]);
 
-        dd(session()->get());
-
         return redirect()->to($this->getRedirectByRole());
     }
 

@@ -30,8 +30,8 @@
                     </label>
                 </div>
                 <div class="links-row">
-                    <!-- <a href="<?= site_url('recuperar_senha') ?>">Esqueci minha senha</a>
-                    <a href="<?= site_url('cadastro') ?>">Cadastre-se</a> -->
+                    <a href="<?= site_url('recuperar-senha') ?>">Esqueci minha senha</a>
+                    <a href="<?= site_url('cadastro') ?>">Cadastre-se</a>
                 </div>
                 <button type="submit" class="btn">Entrar</button>
             </form>

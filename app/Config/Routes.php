@@ -11,6 +11,8 @@ $routes->get('/aluno/perfil','Aluno\DashboardController::index');
 $routes->get('/cadastro', 'Auth\CadastroController::index');
 $routes->post('/cadastro', 'Auth\CadastroController::store');
 $routes->get('/admin/dashboard','Admin\DashboardController::index');
+$routes->get('/recuperar-senha', 'Auth\RecuperarSenhaController::index');
+$routes->post('/recuperar-senha', 'Auth\RecuperarSenhaController::resetarSenha');
 
 $routes->group('admin', function ($routes) {
 
