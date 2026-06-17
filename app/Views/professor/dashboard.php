@@ -22,50 +22,37 @@
     <div class="container">
 
       <!-- CARDS DE RESUMO -->
-      <div class="row">
-
-        <div class="col-md-4 col-sm-4">
-          <div class="card-resumo">
-            <div class="card-numero"><?= $quantidadeTurmas ?></div>
-            <div class="card-label">Turmas</div>
-          </div>
-        </div>
-
-        <div class="col-md-4 col-sm-4">
-          <div class="card-resumo">
-            <div class="card-numero"><?= $quantidadeAtividades ?></div>
-            <div class="card-label">Atividades</div>
-          </div>
-        </div>
-
-        <div class="col-md-4 col-sm-4">
-          <div class="card-resumo">
-            <div class="card-numero"><?= $quantidadeMateriais ?></div>
-            <div class="card-label">Materiais</div>
-          </div>
-        </div>
-
+      <div class="tabela-box">
+        <table class="table text-center" style="margin: 0;">
+          <thead>
+            <tr>
+              <th>Turmas</th>
+              <th>Atividades</th>
+              <th>Materiais</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="card-numero"><?= $quantidadeTurmas ?></td>
+              <td class="card-numero"><?= $quantidadeAtividades ?></td>
+              <td class="card-numero"><?= $quantidadeMateriais ?></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
       <!-- MENU DE NAVEGAÇÃO -->
-      <div class="row menu-dashboard">
-
-        <div class="col-md-3 col-sm-6">
-          <a href="<?= site_url('professor/turmas') ?>" class="btn-menu">Minhas Turmas</a>
-        </div>
-
-        <div class="col-md-3 col-sm-6">
-          <a href="<?= site_url('professor/materiais') ?>" class="btn-menu">Materiais</a>
-        </div>
-
-        <div class="col-md-3 col-sm-6">
-          <a href="<?= site_url('professor/atividades') ?>" class="btn-menu">Atividades</a>
-        </div>
-
-        <div class="col-md-3 col-sm-6">
-          <a href="<?= site_url('professor/notas') ?>" class="btn-menu">Notas</a>
-        </div>
-
+      <div class="tabela-box">
+        <table class="table" style="margin: 0;">
+          <tbody>
+            <tr>
+              <td><a href="<?= site_url('professor/turmas') ?>" class="btn-menu">Minhas Turmas</a></td>
+              <td><a href="<?= site_url('professor/materiais') ?>" class="btn-menu">Materiais</a></td>
+              <td><a href="<?= site_url('professor/atividades') ?>" class="btn-menu">Atividades</a></td>
+              <td><a href="<?= site_url('professor/notas') ?>" class="btn-menu">Notas</a></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
       <div class="text-center" style="margin-top: 30px;">
