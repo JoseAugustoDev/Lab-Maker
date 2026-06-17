@@ -11,7 +11,7 @@ class CursoModel extends Model
 
     protected $returnType = 'array';
 
-    protected $useSoftDeletes = true;
+    
 
     protected $allowedFields = [
         'titulo',
@@ -22,9 +22,7 @@ class CursoModel extends Model
         'data_criacao'
     ];
 
-    protected $useTimestamps = true;
+    
 
-    protected $createdField = 'created_at';
-    protected $updatedField = 'updated_at';
-    protected $deletedField = 'deleted_at';
+    
 }

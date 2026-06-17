@@ -11,7 +11,7 @@ class AtividadeModel extends Model
 
     protected $returnType = 'array';
 
-    protected $useSoftDeletes = true;
+    
 
     protected $allowedFields = [
         'turma_id',
@@ -23,9 +23,7 @@ class AtividadeModel extends Model
         'pontuacao_maxima'
     ];
 
-    protected $useTimestamps = true;
+    
 
-    protected $createdField = 'created_at';
-    protected $updatedField = 'updated_at';
-    protected $deletedField = 'deleted_at';
+    
 }

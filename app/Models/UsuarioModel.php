@@ -11,7 +11,6 @@ class UsuarioModel extends Model
 
     protected $returnType = 'array';
 
-    protected $useSoftDeletes = true;
 
     protected $allowedFields = [
         'nome',
@@ -23,11 +22,6 @@ class UsuarioModel extends Model
         'ativo'
     ];
 
-    protected $useTimestamps = true;
-
-    protected $createdField = 'created_at';
-    protected $updatedField = 'updated_at';
-    protected $deletedField = 'deleted_at';
 
     public function buscarPorEmail(string $email) {
         return $this->where('email', $email)->first();
