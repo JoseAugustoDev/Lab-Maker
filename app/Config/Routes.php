@@ -15,23 +15,23 @@ $routes->get('/admin/dashboard','Admin\DashboardController::index');
 $routes->group('admin', function ($routes) {
 
     $routes->get('professores', 'Admin\ProfessorController::index');
-
     $routes->get('professores/create', 'Admin\ProfessorController::create');
-
     $routes->post('professores/store', 'Admin\ProfessorController::store');
-
     $routes->get('professores/edit/(:num)', 'Admin\ProfessorController::edit/$1');
-
     $routes->post('professores/update/(:num)', 'Admin\ProfessorController::update/$1');
-
     $routes->get('professores/delete/(:num)', 'Admin\ProfessorController::delete/$1');
 
     $routes->get('cursos', 'Admin\CursoController::index');
     $routes->get('cursos/create', 'Admin\CursoController::create');
     $routes->post('cursos/store', 'Admin\CursoController::store');
-
     $routes->get('cursos/edit/(:num)', 'Admin\CursoController::edit/$1');
     $routes->post('cursos/update/(:num)', 'Admin\CursoController::update/$1');
-
     $routes->get('cursos/delete/(:num)', 'Admin\CursoController::delete/$1');
+
+    $routes->get('turmas', 'Admin\TurmaController::index');
+    $routes->get('turmas/create', 'Admin\TurmaController::create');
+    $routes->post('turmas/store', 'Admin\TurmaController::store');
+    $routes->get('turmas/edit/(:num)', 'Admin\TurmaController::edit/$1');
+    $routes->post('turmas/update/(:num)', 'Admin\TurmaController::update/$1');
+    $routes->get('turmas/delete/(:num)', 'Admin\TurmaController::delete/$1');
 });
