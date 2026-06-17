@@ -1,69 +1,17 @@
-# CodeIgniter 4 Application Starter
+Trabalho Final da Matéria de Desenvolvimento Web.
 
-## What is CodeIgniter?
+Grupo: Jose Augusto, Letícia e Raissa.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+**Propósito do Projeto**:
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+O projeto do LabMaker tem como objetivo atuar na área da educação, oferecendo uma plataforma voltada para a capacitação de professores no uso de ferramentas e equipamentos da cultura maker, como impressoras 3D, CNC, Arduino e programação.O sistema busca disponibilizar cursos e materiais de forma organizada, intuitiva e de fácil interação, facilitando o aprendizado e o acesso ao conteúdo. Além disso, a plataforma permite a comunicação entre professores e alunos de maneira simples e eficiente, promovendo maior colaboração durante o processo de ensino.
+O LabMaker também oferece acompanhamento do progresso dos usuários nos cursos, auxiliando no controle das atividades realizadas e incentivando a evolução contínua no aprendizado das tecnologias maker.
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+**Minimundo**:
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
-
-## Installation & updates
-
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
-
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
-
-## Setup
-
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
-
-## Important Change with index.php
-
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
-
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
-
-**Please** read the user guide for a better explanation of how CI4 works!
-
-## Repository Management
-
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
-
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
-
-## Server Requirements
-
-PHP version 8.2 or higher is required, with the following extensions installed:
-
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - The end of life date for PHP 8.1 was December 31, 2025.
-> - If you are still using below PHP 8.2, you should upgrade immediately.
-> - The end of life date for PHP 8.2 will be December 31, 2026.
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+O LabMaker é uma plataforma educacional voltada para a capacitação de professores e alunos na área da cultura maker, oferecendo cursos relacionados a tecnologias como impressão 3D, CNC, Arduino, robótica e programação.
+O sistema permite o cadastro de usuários, podendo estes serem alunos, professores ou administradores. De cada usuário deseja-se armazenar informações pessoais e dados de acesso à plataforma.
+Os alunos podem se matricular em cursos e participar de turmas. Para cada aluno, o sistema registra informações como notas, frequência/presença, progresso nas atividades e participação nas avaliações. Além disso, os alunos têm acesso aos materiais disponibilizados pelos professores e podem acompanhar seu desempenho ao longo do curso.
+As turmas são vinculadas a cursos e possuem informações como horários, materiais didáticos, atividades e avaliações. Cada turma pode possuir vários alunos matriculados e é acompanhada por um ou mais professores responsáveis.
+Os professores são responsáveis por gerenciar suas turmas, disponibilizar materiais, criar atividades e avaliações, além de registrar notas e frequência dos alunos. O sistema também permite a comunicação entre professores e alunos de forma simples e organizada.
+A área administrativa do sistema permite aos administradores realizar o controle e gerenciamento geral da plataforma, incluindo organização de cursos, turmas, usuários e conteúdos. Os administradores também podem acessar relatórios de desempenho, frequência, quantidade de alunos matriculados e andamento das turmas, auxiliando no gerenciamento e expansão da plataforma.
