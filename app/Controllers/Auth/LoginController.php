@@ -96,7 +96,7 @@ class LoginController extends BaseController
 
         return match ($tipoUsuario) {
             'ADMIN' => '/admin/dashboard',
-            'PROFESSOR' => '/professor/turmas',
+            'PROFESSOR' => '/professor/dashboard',
             'ALUNO' => '/aluno/perfil',
             default => '/login',
         };
