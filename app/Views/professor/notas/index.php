@@ -1,65 +1,59 @@
-<div class="container mt-4">
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lançamento de Notas - LabMaker</title>
+  <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
 
-    <h2>
-        Lançamento de Notas
-    </h2>
+  <div class="hero">
+    <div class="container">
+      <h1>Lançamento de Notas</h1>
+      <p>Selecione uma atividade para lançar as notas.</p>
+    </div>
+  </div>
 
-    <hr>
+  <div class="pagina">
+    <div class="container">
 
-    <table class="table table-striped">
+      <div class="topo-lista">
+        <h3 class="topo-titulo">Atividades</h3>
+      </div>
 
-        <thead>
-
-        <tr>
-
-            <th>Atividade</th>
-            <th>Turma</th>
-            <th>Pontuação Máxima</th>
-            <th></th>
-
-        </tr>
-
-        </thead>
-
-        <tbody>
-
-        <?php foreach($atividades as $atividade): ?>
-
+      <div class="tabela-box">
+        <table class="table table-striped">
+          <thead>
             <tr>
-
-                <td>
-                    <?= esc($atividade['titulo']) ?>
-                </td>
-
-                <td>
-                    <?= esc($atividade['codigo']) ?>
-                </td>
-
-                <td>
-                    <?= $atividade['pontuacao_maxima'] ?>
-                </td>
-
-                <td>
-
-                    <a
-                        href="<?= site_url(
-                            'professor/notas/lancar/' .
-                            $atividade['id']
-                        ) ?>"
-                        class="btn btn-primary">
-
-                        Lançar Notas
-
-                    </a>
-
-                </td>
-
+              <th>Atividade</th>
+              <th>Turma</th>
+              <th>Pontuação Máxima</th>
+              <th>Ações</th>
             </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($atividades as $atividade): ?>
+              <tr>
+                <td><?= esc($atividade['titulo']) ?></td>
+                <td><?= esc($atividade['codigo']) ?></td>
+                <td><?= $atividade['pontuacao_maxima'] ?></td>
+                <td>
+                  <a href="<?= site_url('professor/notas/lancar/'.$atividade['id']) ?>" class="btn-nova">Lançar Notas</a>
+                </td>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+      </div>
 
-        <?php endforeach; ?>
+      <a href="<?= site_url('professor/dashboard') ?>" class="link-voltar">Voltar para o Dashboard</a>
 
-        </tbody>
+    </div>
+  </div>
 
-    </table>
-
-</div>
+</body>
+</html>
