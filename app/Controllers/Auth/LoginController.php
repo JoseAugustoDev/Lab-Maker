@@ -63,6 +63,8 @@ class LoginController extends BaseController
                 ->withInput()
                 ->with('erro', 'Usuário ou senha inválidos.');
         }
+        
+        session()->regenerate();
 
         session()->set([
             'usuario_id' => $usuario['id'],
@@ -72,6 +74,7 @@ class LoginController extends BaseController
             'isLoggedIn' => true,
         ]);
 
+        dd(session()->get());
 
         return redirect()->to($this->getRedirectByRole());
     }

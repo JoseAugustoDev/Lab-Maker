@@ -35,10 +35,13 @@
                 </div>
 
                 <div class="acoes-grid">
-                    <a href="#" class="acao-card">Cadastro de Professor</a> <!--Como diferenciar? Talvez uma pela cadastro diferente? Se cadastrado por adm é porfessor? Não sei pensar sobre isso-->
-                    <!-- <a href="<?= base_url('Telas/perfilAdmControleCurso.html') ?>" class="acao-card">Visualizar Cursos</a> 
-                    <a href="<?= base_url('Telas/perfilProfessorTurmas.html') ?>" class="acao-card">Visualizar Turmas</a> <!--Tem telas que são comuns a varios tipos de usuario a diferença é o nivel de permissões esse é uma tela que é esse case-->
-                    <a href="<?= base_url('Telas/perfilAdmRelatorio.html') ?>" class="acao-card">Relatórios</a>
+                    <a href="<?= base_url('admin/professores/create') ?>" class="acao-card">Cadastro de Professor</a>
+                    <a href="<?= base_url('admin/professores') ?>" class="acao-card">Listar Professores</a>
+                    <a href="<?= base_url('admin/cursos/create') ?>" class="acao-card">Cadastrar Cursos</a> 
+                    <a href="<?= base_url('admin/cursos') ?>" class="acao-card">Visualizar Cursos</a> 
+                    <a href="<?= base_url('admin/turmas/create') ?>" class="acao-card">Cadastrar Turmas</a> 
+                    <a href="<?= base_url('admin/turmas') ?>" class="acao-card">Visualizar Turmas</a>
+                    <a href="<?= base_url('admin/relatorios') ?>" class="acao-card">Relatórios</a>
                     <a href="#" class="acao-card">Avisos</a> <!--Fazer essa tela-->
                 </div>
             </div>
