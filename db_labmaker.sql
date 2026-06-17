@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 17/06/2026 às 23:28
+-- Tempo de geração: 18/06/2026 às 01:14
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -66,7 +66,7 @@ CREATE TABLE `curso` (
 --
 
 INSERT INTO `curso` (`id`, `titulo`, `descricao`, `area`, `carga_horaria`, `nivel`, `data_criacao`) VALUES
-(2, 'a', '', 'Impressão 3D', 1, 'Básico', '2026-06-17 18:44:21'),
+(2, 'Curso de Impressão 3D', '', 'Impressão 3D', 1, 'Básico', '2026-06-17 18:44:21'),
 (3, 'Projetos com Arduino', 'Diversos projetos do inicio ao fim', 'Arduino', 30, 'Intermediário', '2026-06-17 19:24:28');
 
 -- --------------------------------------------------------
@@ -91,8 +91,8 @@ CREATE TABLE `material` (
 --
 
 INSERT INTO `material` (`id`, `turma_id`, `professor_id`, `titulo`, `descricao`, `tipo`, `arquivo_url`, `data_publicacao`) VALUES
-(1, 1, 8, 'Teste ', 'Materail de teste', 'LINK', 'http://localhost:8080/professor/turmas', '2026-06-17 20:09:34'),
-(3, 1, 8, 'a', '', 'PDF', 'http://localhost:8080/professor/turmas', '2026-06-17 20:10:58');
+(1, 1, 8, 'Intro ', 'Materail de teste', 'LINK', 'http://localhost:8080/professor/turmas', '2026-06-17 20:09:34'),
+(3, 1, 8, 'Apostila', '', 'PDF', 'http://localhost:8080/professor/turmas', '2026-06-17 20:10:58');
 
 -- --------------------------------------------------------
 
@@ -108,6 +108,13 @@ CREATE TABLE `matricula` (
   `status` varchar(30) DEFAULT NULL,
   `progresso` decimal(5,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `matricula`
+--
+
+INSERT INTO `matricula` (`id`, `aluno_id`, `turma_id`, `data_matricula`, `status`, `progresso`) VALUES
+(1, 1, 1, '2026-06-17 19:13:55', 'ativa', 33.00);
 
 -- --------------------------------------------------------
 
@@ -170,6 +177,13 @@ CREATE TABLE `nota` (
   `observacao` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `nota`
+--
+
+INSERT INTO `nota` (`id`, `aluno_id`, `atividade_id`, `valor`, `observacao`) VALUES
+(1, 1, 1, 25.00, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -186,7 +200,8 @@ CREATE TABLE `professor_turma` (
 --
 
 INSERT INTO `professor_turma` (`professor_id`, `turma_id`) VALUES
-(8, 1);
+(8, 1),
+(9, 2);
 
 -- --------------------------------------------------------
 
@@ -210,7 +225,8 @@ CREATE TABLE `turma` (
 --
 
 INSERT INTO `turma` (`id`, `curso_id`, `codigo`, `semestre`, `data_inicio`, `data_fim`, `horario`, `status`) VALUES
-(1, 3, '32.000.910844-8', '2026/2', '2026-08-01', '2026-12-17', 'Terça e Quinta - 19:00', 'ABERTA');
+(1, 3, '32.000.910844-8', '2026/2', '2026-08-01', '2026-12-17', 'Terça e Quinta - 19:00', 'EM_ANDAMENTO'),
+(2, 2, '8FC708B91745DFDD07D1AEC33AE77939', '2026/2', '2026-06-25', '2026-07-09', 'Terça e Quinta - 19:00', 'ABERTA');
 
 -- --------------------------------------------------------
 
@@ -235,9 +251,10 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id`, `nome`, `email`, `senha`, `telefone`, `data_cadastro`, `tipo_usuario`, `ativo`) VALUES
 (1, 'Jose', 'admin@labmaker.com', '$2y$10$ZG4XvGnQkWVJ6PfKn3l2u.MtGvp7o0ybZDGESZXXRPzKcDS6QUk7O', NULL, '2026-06-17 12:58:30', 'ALUNO', 1),
-(4, 'Augusto', 'teste@gmail.com', '$2y$10$LPZ8v1Gc/ccM94twny9imOZTUmmRaKI2NCtGbWyRIB123i7AiOZaG', '89224002', '2026-06-17 17:52:06', 'ADMIN', 1),
-(6, 'Breciani', 'contato@gmail.com', '$2y$10$HNJ.pZK832Q8mKjGD6Q1YeKH6Bm65S1HIsMJNSFx8.KmuNH57VhcG', '40028922', '2026-06-17 18:00:36', 'ALUNO', 1),
-(8, 'Professor Arduino', 'contato@hotmail.com', '$2y$10$xOeu94yDmkSuMR3MVoNOfepebPsZP0WO54uboeGFJqmSpDku3Ej4i', '36589521', '2026-06-17 18:34:55', 'PROFESSOR', 1);
+(4, 'Jose Augusto', 'contato@gmail.com', '$2y$10$LPZ8v1Gc/ccM94twny9imOZTUmmRaKI2NCtGbWyRIB123i7AiOZaG', '162633528', '2026-06-17 17:52:06', 'ADMIN', 1),
+(6, 'Leticia', 'teste@gmail.com', '$2y$10$HNJ.pZK832Q8mKjGD6Q1YeKH6Bm65S1HIsMJNSFx8.KmuNH57VhcG', '33236333', '2026-06-17 18:00:36', 'ALUNO', 1),
+(8, 'Professor Arduino', 'professor@hotmail.com', '$2y$10$xOeu94yDmkSuMR3MVoNOfepebPsZP0WO54uboeGFJqmSpDku3Ej4i', '89224002', '2026-06-17 18:34:55', 'PROFESSOR', 1),
+(9, 'Raissa', 'robotica@estudante.ifes.edu.br', '$2y$10$mGoUaE6FxvNlFDi8lJb9e.dAr6hZGjLc6rAnC.z2nLBn6iMwJnBOm', '40028922', '2026-06-17 21:41:20', 'PROFESSOR', 1);
 
 --
 -- Índices para tabelas despejadas
@@ -330,7 +347,7 @@ ALTER TABLE `atividade`
 -- AUTO_INCREMENT de tabela `curso`
 --
 ALTER TABLE `curso`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `material`
@@ -342,7 +359,7 @@ ALTER TABLE `material`
 -- AUTO_INCREMENT de tabela `matricula`
 --
 ALTER TABLE `matricula`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `mensagem`
@@ -360,19 +377,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de tabela `nota`
 --
 ALTER TABLE `nota`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `turma`
 --
 ALTER TABLE `turma`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Restrições para tabelas despejadas
