@@ -72,10 +72,8 @@ $routes->group(
     ['filter' => 'aluno'],
     function ($routes) {
 
-        $routes->get(
-            'perfil',
-            'Aluno\PerfilController::index'
-        );
+        $routes->get('perfil','Aluno\PerfilController::index');
+        $routes->get('cursos','Aluno\CursoController::index');
 
     }
 );

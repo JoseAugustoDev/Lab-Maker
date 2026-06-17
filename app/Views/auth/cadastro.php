@@ -65,10 +65,10 @@
                         </select>
                     </div> -->
                     <div class="form-group">
-                        <a href="recuperar_senha.html">Esqueci minha senha</a>
+                        <a href="<?= base_url('recuperar_senha') ?>">Esqueci minha senha</a>
                     </div>
                     <div class="form-group">
-                        <a href="login.html">Já tem uma conta? Faça login</a>
+                        <a href="<?= base_url('login') ?>">Já tem uma conta? Faça login</a>
                     </div>
 
                     <button type="submit" class="btn">Cadastrar</button>
