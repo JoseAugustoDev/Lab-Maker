@@ -1,5 +1,25 @@
 Trabalho Final da Matéria de Desenvolvimento Web.
 
+O Sistema foi desenvolvido utilizando o codeIgniter junto com o Xampp para rodar os servidores http e mysql.
+
+Para rodar o sistema, baixe o repositorio na sua maquina local dentro de C://xampp/htdocs/labmaker.
+No xampp, garanta que os servidores http e mysql estejam rodando. No terminal, no diretorio do labmaker, rode o comando `php spark serve` para inicializar o projeto.
+Acesse o localhost:8080/ para visualizar a home do projeto e assim usa-lo.
+
+Aqui no repositório tem um arquivo chamado `db_labmaker.sql`. É necessário importá-lo no phpMyAdmin antes de tentar usar. O motivo disso é para que tudo seja criado da maneira como deve ser e os dados já sejam inseridos, facilitando o uso.
+
+Lista de usuarios para testar as diversas formas de visualização do sistema:
+
+aluno@labmaker.com
+alunodois@labmaker.com
+
+prof.robotica@labmaker.com
+prof.arduino@labmaker.com
+
+admin@labmaker.com
+
+Todos tem a mesma senha: `teste`
+
 Grupo: Jose Augusto, Letícia e Raissa.
 
 **Propósito do Projeto**:

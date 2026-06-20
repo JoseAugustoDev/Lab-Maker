@@ -250,11 +250,11 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `nome`, `email`, `senha`, `telefone`, `data_cadastro`, `tipo_usuario`, `ativo`) VALUES
-(1, 'Jose', 'admin@labmaker.com', '$2y$10$ZG4XvGnQkWVJ6PfKn3l2u.MtGvp7o0ybZDGESZXXRPzKcDS6QUk7O', NULL, '2026-06-17 12:58:30', 'ALUNO', 1),
-(4, 'Jose Augusto', 'contato@gmail.com', '$2y$10$LPZ8v1Gc/ccM94twny9imOZTUmmRaKI2NCtGbWyRIB123i7AiOZaG', '162633528', '2026-06-17 17:52:06', 'ADMIN', 1),
-(6, 'Leticia', 'teste@gmail.com', '$2y$10$HNJ.pZK832Q8mKjGD6Q1YeKH6Bm65S1HIsMJNSFx8.KmuNH57VhcG', '33236333', '2026-06-17 18:00:36', 'ALUNO', 1),
-(8, 'Professor Arduino', 'professor@hotmail.com', '$2y$10$xOeu94yDmkSuMR3MVoNOfepebPsZP0WO54uboeGFJqmSpDku3Ej4i', '89224002', '2026-06-17 18:34:55', 'PROFESSOR', 1),
-(9, 'Raissa', 'robotica@estudante.ifes.edu.br', '$2y$10$mGoUaE6FxvNlFDi8lJb9e.dAr6hZGjLc6rAnC.z2nLBn6iMwJnBOm', '40028922', '2026-06-17 21:41:20', 'PROFESSOR', 1);
+(1, 'Jose', 'aluno@labmaker.com', '$2y$10$ZG4XvGnQkWVJ6PfKn3l2u.MtGvp7o0ybZDGESZXXRPzKcDS6QUk7O', NULL, '2026-06-17 12:58:30', 'ALUNO', 1),
+(4, 'Jose Augusto', 'admin@labmaker.com', '$2y$10$ZG4XvGnQkWVJ6PfKn3l2u.MtGvp7o0ybZDGESZXXRPzKcDS6QUk7O', '162633528', '2026-06-17 17:52:06', 'ADMIN', 1),
+(6, 'Leticia', 'alunodois@labmaker.com', '$2y$10$ZG4XvGnQkWVJ6PfKn3l2u.MtGvp7o0ybZDGESZXXRPzKcDS6QUk7O', '33236333', '2026-06-17 18:00:36', 'ALUNO', 1),
+(8, 'Professor Arduino', 'prof.arduino@labmaker.com', '$2y$10$ZG4XvGnQkWVJ6PfKn3l2u.MtGvp7o0ybZDGESZXXRPzKcDS6QUk7O', '89224002', '2026-06-17 18:34:55', 'PROFESSOR', 1),
+(9, 'Raissa', 'prof.robotica@labmaker.com', '$2y$10$ZG4XvGnQkWVJ6PfKn3l2u.MtGvp7o0ybZDGESZXXRPzKcDS6QUk7O', '40028922', '2026-06-17 21:41:20', 'PROFESSOR', 1);
 
 --
 -- Índices para tabelas despejadas
