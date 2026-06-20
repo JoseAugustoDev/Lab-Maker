@@ -3,6 +3,20 @@ Trabalho Final da Matéria de Desenvolvimento Web.
 O Sistema foi desenvolvido utilizando o codeIgniter junto com o Xampp para rodar os servidores http e mysql.
 
 Para rodar o sistema, baixe o repositorio na sua maquina local dentro de C://xampp/htdocs/labmaker.
+
+Garanta que o .env esteja com as seguintes configs:
+
+CI_ENVIRONMENT = development
+
+database.default.hostname = localhost
+database.default.database = labmaker
+database.default.username = root
+database.default.password =
+database.default.DBDriver = MySQLi
+database.default.port     = 3306
+
+app.baseURL = 'http://localhost:8080/'
+
 No xampp, garanta que os servidores http e mysql estejam rodando. No terminal, no diretorio do labmaker, rode o comando `php spark serve` para inicializar o projeto.
 Acesse o localhost:8080/ para visualizar a home do projeto e assim usa-lo.
 
